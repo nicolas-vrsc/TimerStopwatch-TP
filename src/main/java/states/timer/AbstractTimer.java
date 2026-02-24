@@ -15,6 +15,7 @@ public abstract class AbstractTimer extends ClockState {
 	// timer and memTimer need to be static, since their values
 	// need to be shared between all Timer substates.
 	protected static int timer;
+	protected static boolean ring;
 	protected static int memTimer;
 
     // these getters are needed for testing purposes
