@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestStopwatchLabels extends TestGUIAbstract {
 
     @Test
+	@DisplayName("Test the initial labels of the stopwatch")
 	void testStopwatch1() {
     	c.left(); //simulate clicking on the left button
     	g.updateUI(c); //apply the effect on the user interface

@@ -19,6 +19,7 @@ class IdleTest {
 
 	//The following "regression test" was added after having found a bug in the code
 	@Test
+	@DisplayName("IdleTimer follows Singleton pattern")
 	void testSingletonDP() {
 		// the initial state of the statechart should be an IdleTimer object
 		// that is exactly the same object as the "singleton" instance of the IdleTimer state
@@ -26,16 +27,19 @@ class IdleTest {
 	}
 
 	@Test
+	@DisplayName("Tests initial state of the timer")
 	void testUpNoTransition() {
 		/* test whether the up event leaves us in the IdleTimer state.
 		   (upon creation of IdleTimer state, memTimer is initialised to 0,
 		   while memTimer > 0 in order to transition to ActiveTimer */
 		assertEquals(0, AbstractTimer.getTimer(),"For the value of timer we ");
+		assertFalse(AbstractTimer.isRing());
 		assertEquals(0, AbstractTimer.getMemTimer(),"For the value of memTimer we ");
 		assertSame(context.currentState, context.currentState.up());		
 	}
 
 	@Test
+	@DisplayName("Tests correct arrival at ActiveTimer")
 	void testUpWithTransition() {
 		/* test whether a series of events (and the corresponding transitions)
 		 * brings us to the ActiveTimer state,
@@ -54,6 +58,7 @@ class IdleTest {
 		}
 
 	@Test
+	@DisplayName("Tests correct arrival at SetTimer")
 	void testRight() {
 		// test whether the right() event brings us to the SetTimer state
 		assertSame(SetTimer.Instance(), context.currentState.right());
